@@ -19,11 +19,10 @@ export class MyCardComponent {
 
   @Output() messageChange = new EventEmitter();
 
-  messageHandler(value) {
-    this.text = value;
-    this.messageChange.emit(this.text);
-  }
+  public text = '';
+  public theRating = 3;
 
+  @Output() ratingChange = new EventEmitter();
 
   @Input()
   get rating() {
@@ -34,14 +33,17 @@ export class MyCardComponent {
     this.ratingChange.emit(newRating);
   }
 
-  @Output() ratingChange = new EventEmitter();
-
-  public text = '';
-  public theRating = 3;
+  messageHandler(value) {
+    this.text = value;
+    this.messageChange.emit(this.text);
+  }
 
   ratingHandler(value) {
-    this.theRating = value;
-    this.ratingChange.emit(this.theRating);
+    // tslint:disable-next-line:triple-equals
+    if (value != this.theRating) {
+      this.theRating = value;
+      this.ratingChange.emit(this.theRating);
+    }
   }
 
   constructor() { }

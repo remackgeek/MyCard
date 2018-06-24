@@ -3,18 +3,13 @@ import {
     Injectable,
     Input,
     Output,
-    OnInit,
-    OnChanges,
     EventEmitter,
-    ViewEncapsulation,
-    ChangeDetectorRef,
-    ChangeDetectionStrategy,
 } from '@angular/core';
 
 @Injectable()
 export class RatingService {
     updateRatings(rating): boolean[] {
-        let result = Array.from({ length: 5 }).map((state, index) => {
+        const result = Array.from({ length: 5 }).map((state, index) => {
             return index < rating + 1;
         });
         return result;
