@@ -1,0 +1,8 @@
+{
+    "name": "my-card",
+    "version": "1.0.1",
+    "description": "A demonstration Custom Element",
+  
+    "main": "index.js"
+  }
+  
