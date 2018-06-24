@@ -1,16 +1,38 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { NgModule, Injector } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatCardModule, MatInputModule } from '@angular/material';
+import { createCustomElement } from '@angular/elements';
+import { ElementZoneStrategyFactory } from 'elements-zone-strategy';
 
-import { AppComponent } from './app.component';
+import { MyCardComponent } from './my-card/my-card.component';
+import { RatingComponent, RatingService } from './rating/rating.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    MyCardComponent,
+    RatingComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    NoopAnimationsModule,
+    FormsModule,
+    MatCardModule,
+    MatInputModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [RatingService],
+  entryComponents: [MyCardComponent],
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private injector: Injector) {
+
+    const strategyFactory = new ElementZoneStrategyFactory(MyCardComponent, this.injector);
+    const cardElement = createCustomElement(MyCardComponent, { injector: this.injector, strategyFactory });
+    customElements.define('my-card', cardElement);
+  }
+
+  ngDoBootstrap() {
+  }
+}

@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>MyCard</title>
@@ -8,7 +9,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
+
 <body>
-  <app-root></app-root>
+  <div>
+    <div>
+      <b>My Rating is
+        <span id="rating"></span>
+        <button id="ratingBtn">Give max rating</button>
+      </b>
+    </div>
+    <div>
+      <b>
+        <input id="message">
+        <button id="messageBtn">Set Text</button>
+      </b>
+    </div>
+  </div>
+  <p></p>
+  <my-card></my-card>
+
+  <script>
+    const ratingComponent = document.querySelector('my-card');
+    const ratingText = document.querySelector('#rating');
+    const ratingButton = document.querySelector('#ratingBtn');
+
+    function displayRating(data) {
+      ratingText.innerHTML = data.detail + 1;
+    }
+
+    function myClick() {
+      ratingComponent.rating = 4;
+    }
+
+
+    ratingComponent.addEventListener('ratingChange', displayRating);
+
+    ratingButton.addEventListener('click', myClick);
+
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+      ratingText.innerHTML = ratingComponent.rating + 1;
+    });
+
+
+    const message = document.querySelector('#message');
+    const messageButton = document.querySelector('#messageBtn');
+
+    function displayMessage(data) {
+      message.value = data.detail;
+    }
+
+    function messageClick() {
+      ratingComponent.message = message.value;
+    }
+
+    ratingComponent.addEventListener('messageChange', displayMessage);
+    messageButton.addEventListener('click', messageClick);
+
+  </script>
+
 </body>
+
 </html>

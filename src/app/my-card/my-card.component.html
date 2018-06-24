@@ -1,0 +1,12 @@
+<mat-card style="display:flex;flex-direction: column;">
+        <div>
+                <mat-form-field>
+                        <input matInput [(ngModel)]="text"  (ngModelChange)="messageHandler($event)" placeholder="some text here">
+                </mat-form-field>
+                <span style="font-size: 0.7rem; padding-left:2rem">Your text here:&nbsp;</span>
+                <span>{{text}}</span>
+        </div>
+        <div>
+                <app-rating [rating]="theRating" (ratingChange)="ratingHandler($event)"   ></app-rating>
+        </div>
+</mat-card>
