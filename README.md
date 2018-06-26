@@ -1,27 +1,25 @@
 # MyCard
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
+This is an example using multiple components and Angular Material inside a Zone-based Angular Element.
 
-## Development server
+Portions based on this demo: https://github.com/andrei-antal/ng-europe-demo-angular-elements 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Test
 
-## Code scaffolding
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/` to see it working
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `npm run build` to build the project. The production artifacts will be stored in the `dist/` directory. 
 
-## Running unit tests
+## Output
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+To use in another project, include the files:
 
-## Running end-to-end tests
+    dist/MyCard/index.js
+    dist/MyCard/styles.css
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Then you can add `<my-card></my-card>` to your markup
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+The dist/MyCard directory can be packaged for npm with `npm pack` or `npm publish`
